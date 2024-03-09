@@ -23,6 +23,30 @@ char** NewWords(char** words, int size)
 	return newwords;
 }
 
+void DeleteWords(char** words, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		delete[] words[i];
+	}
+	delete[] words;
+}
+
+int SizeWords(FILE* f, char** words)
+{
+	fseek(f, 0, SEEK_SET);
+	int size = 0;
+	char c = fgetc(f);
+	while (c != EOF)
+	{	
+		if(c=='\n')
+			size++;
+		c = fgetc(f);
+	}
+	size++;
+	return size;
+}
+
 char** FileRead(FILE* f,char** words)
 {
 	int size = 1;
@@ -40,3 +64,7 @@ char** FileRead(FILE* f,char** words)
 	return words;
 }
 
+void FileWrite(FILE* f, char** words)
+{
+
+}

@@ -10,8 +10,9 @@ int main()
 	}
 	char** words = CreateStrArr(1);
 	words = FileRead(f1, words);
+	int size = SizeWords(f1, words);
 	
-	delete[] words;
+	DeleteWords(words, size);
 	fclose(f1);
 	fclose(f2);
 }
