@@ -12,7 +12,31 @@ char** CreateStrArr(int size)
 	return str;
 }
 
-void FileRead(FILE* f,char** words)
+char** NewWords(char** words, int size)
 {
-
+	char** newwords = CreateStrArr(size);
+	for (int i = 0; i < size - 1; i++)
+	{
+		newwords[i] = words[i];
+	}
+	delete[] words;
+	return newwords;
 }
+
+char** FileRead(FILE* f,char** words)
+{
+	int size = 1;
+	int count = 0;
+
+	while (fgetc(f)!=EOF)
+	{
+		words = NewWords(words, size++);
+		char* str = CreateStr(50);
+		fseek(f, -1, SEEK_CUR);
+		fgets(str, 50, f);
+		words[count] = str;
+		count++;
+	}
+	return words;
+}
+

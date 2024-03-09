@@ -6,3 +6,4 @@ using namespace std;
 
 char* CreateStr(int size);
 char** CreateStrArr(int size);
+char** FileRead(FILE* f, char** words);
