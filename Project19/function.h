@@ -9,3 +9,4 @@ char** CreateStrArr(int size);
 void DeleteWords(char** words, int size);
 int SizeWords(FILE* f, char** words);
 char** FileRead(FILE* f, char** words);
+void FileWrite(FILE* f, char** words,int size);

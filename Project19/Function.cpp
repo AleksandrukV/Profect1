@@ -64,7 +64,12 @@ char** FileRead(FILE* f,char** words)
 	return words;
 }
 
-void FileWrite(FILE* f, char** words)
+void FileWrite(FILE* f, char** words,int size) 
 {
-
+	for (int i = size - 1; i >= 0; i--)
+	{
+		fprintf(f, "%s", words[i]);
+		if (i == size - 1)
+			fprintf(f, "%c", '\n');
+	}
 }
